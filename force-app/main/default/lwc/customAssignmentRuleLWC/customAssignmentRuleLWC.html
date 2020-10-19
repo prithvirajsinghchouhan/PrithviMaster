@@ -1,0 +1,29 @@
+<template>
+    <lightning-card > 
+        <h2 class="slds-align_absolute-center slds-text-title_bold">Assignment Rule</h2>
+    </br>
+</br>
+    <template if:false={loaded}>
+        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </template>
+        <div class="slds-section slds-is-open">
+            <div class="slds-grid">
+                <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
+                  <lightning-input label="Name" type="text" value="" ></lightning-input>
+                </div>
+                <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
+                        <lightning-combobox name="Select Object"
+                    label="Select Object" value="" placeholder="--Select--"
+                    options={allSobjectList} onchange={handleChange}>
+                  </lightning-combobox> 
+              </div>
+             </div>
+        </div>
+    </br>
+        <div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center" style="padding:20px;">
+            <lightning-button  variant="brand" label="Create" title="" onclick={createAssigmentRule} class="slds-m-left_x-small"></lightning-button>
+            <lightning-button  variant="brand" label="Cancel" title="" onclick={navigateToAssignmentTab} class="slds-m-left_x-small"></lightning-button>
+         </div> 
+   
+    </lightning-card>
+</template>

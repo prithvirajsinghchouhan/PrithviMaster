@@ -1,0 +1,105 @@
+<template>
+    <div class="slds-box slds-theme_default">
+        
+            <table class="detailList" style="height: 10px; width: 10px; border:0;">
+                <tbody>
+                    <tr class="last detailRow">
+                        <td colspan="4">
+                            <div>
+                                <div class="ptBody secondaryPalette">
+                                    <div class="content">
+                                    <h2 class="pageDesc"><b>{username} at Pfizer</b></h2>
+                                        <a class="Pagefont" href="javascript:void(0)" onclick={calendercall}>
+                                    <lightning-formatted-date-time
+                                    value={todaydate}
+                                    year="2-digit"
+                                    month="long"
+                                    day="2-digit"
+                                    weekday="long"
+                                    time-zone="UTC">
+                                    </lightning-formatted-date-time>
+                                        </a>
+                                        <h1 class="Pagefont"><b>Welcome to Veeva Online &amp; iPLAN</b></h1>
+                                        <br/>
+                                        <table>
+                                            <tr><td style="text-align: center;"><lightning-icon icon-name="utility:home" size="large"></lightning-icon></td>
+                                                <td align="left"><h1 class="pageType">Overview</h1>
+                                                    <h2 class="pageDescription">Important Information for New Users!</h2></td>
+                                            </tr></table>
+                                        </div>
+                                    </div>
+                                    <div class="apexp">
+                                        <div class="individualPalette">
+                                            <div class="Custom99Block">
+                                                <div class="editPage">
+                                                    <div class="bPageBlock bEditBlock secondaryPalette">
+                                                        <div class="pbBody">
+                                                            <div >
+                                                                <div class="slds-p-bottom_x-large">
+                                                                    <b class="Pagefont">&nbsp;These applications have been divided up into several key areas of functionality. Each area is typically accessed via a 'Tab'. <br/>&nbsp;The 'Tabs' available to you are situated below the Pfizer logo in the upper left corner.<br/>&nbsp;They span from left to right and when clicked will launch into a different part of the applications.<br/><br/>
+                                                                        &nbsp;To help you get started using our new applications, we have included brief outlines of the major areas of functionality below.</b>
+                                                                </div>
+                                                                <div style="background-color: #fc8744;border-color:#fc8744;">
+                                                                    <h3>&nbsp;</h3>
+                                                                </div>
+                                                                <div class="pbSubsection">&nbsp;
+                                                                    <table class="detailList slds-p-around_small" border="5"  >
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th align="right" colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">Tab Name</th>
+                                                                                <th align="left" colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">Tab Description</th>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">Home</td>
+                                                                                <td colspan="1" rowspan="1" style="text-align: left;" class="slds-truncate slds-p-around_small"><b class="Pagefont">Navigate</b>&nbsp;from this initial landing screen to all &nbsp;Veeva Online&nbsp;&amp; iPLAN online tabs.</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">My Schedule</td>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small"><b class="Pagefont">View</b>&nbsp;planned and completed calls, and create&nbsp;<u>events</u>&nbsp;that can be synchronized with Veeva CRM.</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">My Accounts</td>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small"><b class="Pagefont">Access</b>&nbsp;the complete list of accounts in your territory. View the account list by Medical Professionals,<br/> Group Practices,Institutions, Departments,Other Influentials, Other Entities, other HQ pushed views <br/>and views created by you.</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">My Starters</td>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small"><b class="Pagefont">Create</b>&nbsp;a Starter transfer. Return Starters to Pfizer. Request additional Starter Lot Numbers to be added.<br/> Print worksheets for a Transfer or an Inventory.</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">Starter Transactions</td>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small"><b class="Pagefont">View</b>&nbsp;recent Starter transaction records for Returns and Transfers.</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">Analytics</td>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small"><b class="Pagefont">Analyze</b>&nbsp;territory level calls and sales data including NRx, TRx, Insell and Outflow.</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">Report Browser</td>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small"><b class="Pagefont">Access</b>&nbsp;reports on Report Browser.</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">My iPLAN</td>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small"><b class="Pagefont">Access</b>&nbsp;the list of accounts in your territory. View goals that you have written to your aligned accounts.<br/> Create new goals for your aligned accounts. View Planning Timeline. <br/>&nbsp;Access CSI link. Access and view reports.</td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small">iPLAN Accounts</td>
+                                                                                <td colspan="1" rowspan="1" class="slds-truncate slds-p-around_small"><b class="Pagefont">Access</b>&nbsp;the complete list of accounts in iPlan. This includes accounts that are not in your territory.<br/> Note: default view displays the most recently accessed accounts.</td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                                                </div>
+                                    </div>
+                                    </td>
+                    </tr>
+                    </tbody>
+                    </table>
+                   </div>
+
+</template>

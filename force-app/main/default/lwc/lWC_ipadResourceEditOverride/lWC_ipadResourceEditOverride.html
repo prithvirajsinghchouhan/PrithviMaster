@@ -1,0 +1,19 @@
+<template>
+    
+    <div role="dialog" tabindex="-1" aria-labelledby="header43" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container">
+                <div class="slds-modal__header">
+                     <span style="padding: 0% 0% 0% 40%;">
+                         <lightning-icon icon-name="utility:close"  style="padding: 0% 0% 0% 50%;" size="small" onclick={cancelDialog} ></lightning-icon>
+                    </span>
+            </div>
+            <div class="slds-modal__content slds-p-around--medium slds-grid slds-wrap ">
+              <span style="color:red;text-align:center;padding: 0% 0% 0% 25%;font-size:15px;">You dont have rights.Please contact System Admin.</span>
+            </div>
+            <div class="slds-modal__footer">             
+            </div>
+        </div>
+    </div>
+    <div class="slds-backdrop slds-backdrop--open"></div>
+
+</template>

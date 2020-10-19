@@ -1,0 +1,97 @@
+<template>
+    <lightning-card >
+        <!--div class="slds-page-header" role="banner">
+            <div class="slds-grid">
+                <div class="slds-col">
+                    <div>
+                        <div class="slds-page-header__row">
+                        <div class="slds-page-header__col-title">
+                        <div class="slds-media">
+                        <div class="slds-media__figure">
+                        <span class="slds-icon_container  slds-icon-standard-account" title="Assignment Rule">
+                        <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                        <use xlink:href="/apexpages/slds/latest/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+                        </svg>
+                        <span class="slds-assistive-text">Assignment Rule</span>
+                        </span>
+                        </div>
+                        <div class="slds-media__body">
+                            <p> <b>Assignment Rule</b></p>
+                        <div class="slds-page-header__name">
+                        <div class="slds-page-header__name-title">
+                        <h1>
+                            <span class="slds-page-header__title slds-truncate" title="New Allocation Set">Assignment Rule</span>
+                        </h1>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div-->
+    <!--div>
+        <div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center" style="padding:20px;">
+            <lightning-button  label="Edit" title="" onclick={createAssigmentRule} class="slds-m-left_x-small"></lightning-button>
+         </div>
+        <lightning-record-view-form
+                    id="recordEditForm"
+                    record-id={recordId}
+                    object-api-name="Assignment_Rule__c">
+                <div class="slds-grid">
+                        <div class="slds-col slds-size_1-of-2 slds-p-left_x-large slds-text-title_bold">
+                            <lightning-output-field field-name="Name" class="slds-border_bottom"></lightning-output-field>                        
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-left_x-large slds-text-title_bold slds-p-right_large">
+                            <lightning-output-field field-name="Object_API_Name__c" class="slds-border_bottom"></lightning-output-field>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 slds-p-left_x-large slds-text-title_bold">
+                            <lightning-output-field field-name="Object_Label__c" class="slds-border_bottom"></lightning-output-field>
+                        </div>
+                </div>
+        </lightning-record-view-form>
+        <div class="slds-m-top_small slds-m-bottom_medium slds-align_absolute-center" style="padding:20px;">
+            <lightning-button  label="Edit" title="" onclick={createAssigmentRule} class="slds-m-left_x-small"></lightning-button>
+         </div>
+    </div-->
+
+    <div>
+        <div class="slds-grid slds-wrap">
+            <table>
+              <tr>
+                <th class="slds-p-left_small" style="width:10%">Sort Order</th>
+                <th class="slds-p-left_small" style="width:60%">Field</th>
+                <th class="slds-p-left_small" >Assign To</th>
+                <th class="slds-p-left_small" style="width:8%">Email</th>
+            </tr>
+              <template for:each={allcriteriarecords} for:item="crec" for:index="indx">
+                <tr key={crec.key} id={crec.key}>
+                    <!--td class="slds-p-top_medium">{crec.Sort_Order__c}</td>
+                    <td class="slds-p-top_medium">{crec.Field_Name__c}</td>
+                    <td class="slds-p-top_medium">{crec.Operator__c}</td>
+                    <td class="slds-p-top_medium">{crec.Value__c}</td-->
+                        <td class="slds-p-top_medium slds-p-left_small">{crec.Order}</td>
+                        <td class="slds-p-top_medium slds-p-left_small">{crec.Criteria}</td>
+                        <td class="slds-p-top_medium slds-p-left_small">{crec.Assignee}</td>
+                        <template if:true={crec.isEmail}>
+                            <td>
+                            <lightning-input label="" variant="label-hidden" disabled class="slds-p-top_medium slds-p-left_small" type="checkbox" checked={checkboxVal} >
+                            </lightning-input>
+                        </td>
+                        </template>
+                        <template if:false={crec.isEmail}>
+                            <td>
+                            <lightning-input label="" variant="label-hidden" disabled class="slds-p-top_medium slds-p-left_small" type="checkbox" checked={checkboxfalse} >
+                            </lightning-input>
+                        </td>
+                        </template>
+                        <!--td class="slds-p-top_medium">{crec.isEmail}</td-->
+                </tr>
+              </template>
+            </table>
+        </div>
+    </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,12 @@
+<template>
+    <lightning-record-edit-form object-api-name={contactobj} onsuccess={handleQuoteCreated} column=2>
+        <lightning-messages></lightning-messages>
+        <div class="slds-grid slds-wrap">
+            <p>dfhdshshd111111111122233344455666</p>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field data-accid field-name={contactlookup} onchange={fetchingaccid}></lightning-input-field></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={phoneField} value={pvalue}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={emailField} value={evalue}></lightning-input-field></div>
+        </div>
+        <lightning-button type="submit" variant="brand" label="Create Quote" onclick={handleSave}></lightning-button>
+    </lightning-record-edit-form>
+</template>

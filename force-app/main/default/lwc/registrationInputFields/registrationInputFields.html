@@ -1,0 +1,24 @@
+<template>
+    
+<template if:true={fieldtypedate}>
+<lightning-input type="date" name="input1" label={fieldlabel} value={fieldvalue} required={required} onchange={handlevalueschange}></lightning-input>
+</template>
+<template if:true={fieldtypecheck}>
+<lightning-input type="checkbox" name="input1" label={fieldlabel} value={fieldvalue} required={required} onchange={handlevalueschange}></lightning-input>
+</template>
+<template if:true={fieldtypetext}>
+<lightning-input type="text" name="input1" label={fieldlabel} value={fieldvalue} required={required} onchange={handlevalueschange}></lightning-input>
+</template>
+<template if:true={fieldtypenumb}>
+<lightning-input type="number" name="input1" label={fieldlabel} value={fieldvalue} required={required} onchange={handlevalueschange}></lightning-input>
+</template>
+<template if:true={fieldtypepick}>
+<lightning-combobox required={required}
+value={fieldvalue}
+options={picklistvalues}
+placeholder="Select an Option"
+label={fieldlabel}
+onchange={handleComboboxChange}
+></lightning-combobox>
+</template>
+</template>

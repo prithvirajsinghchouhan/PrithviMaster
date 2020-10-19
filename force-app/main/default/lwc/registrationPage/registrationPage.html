@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-grid slds-gutters">
+    <template for:each={metadatarecords.data} for:item="metadata">
+        
+        <div key={metadata.id} ><c-registration-input-fields onvaluesetevent={handlevaluechangeevent} 
+            fieldlabel={metadata.Field_Label__c}
+            required={metadata.Required__c}
+            fieldapiname={metadata.Field_API_Name__c}
+            fieldtype={metadata.Field_Type__c}
+            sobjectapiname={metadata.SObject_API_Name__c}
+            ></c-registration-input-fields></div>
+            
+    </template>
+</div>
+    <lightning-button variant="brand" label="Save" title="Looks like a link" onclick={saveData} class="slds-m-left_x-small"></lightning-button>
+    
+</template>

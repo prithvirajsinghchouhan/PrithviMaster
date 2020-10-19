@@ -1,0 +1,87 @@
+<template>
+   <template if:true={spinner}>
+    <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+   </template>
+    <lightning-card >
+            <p style="height: 20px; border:none; background-color:#D3D3D3">Step 1: Set the order in which this rule entry will be processed</p>
+             <br/>
+            <div class="slds-grid">
+            <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
+                <lightning-input class="sortfield" label="Sort Order" type="number" value="" required min='1' pattern="[0-9]*" message-when-pattern-mismatch="Please fill correct Sort Order"></lightning-input>
+            </div>
+            </div>
+            <br/>
+            <br/>
+            <p style="height: 20px; border:none; background-color:#D3D3D3">Step 2: Select the criteria for this rule entry</p>
+            <br/>
+            <div>
+                <div class="slds-text-align_right">
+                    <lightning-button-icon icon-name="utility:add" onclick={addrows} alternative-text="Save" class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                    <lightning-button-icon icon-name="utility:delete" onclick={deleterows} alternative-text="Save" class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                </div>
+                <table>
+                    <tr>
+                        <th></th>
+                        <th class="slds-p-left_small">Field</th>
+                        <th class="slds-p-left_small">Operator</th>
+                        <th class="slds-p-left_small">Value</th>
+                    </tr>
+                    <template for:each={rulelist} for:item="rule" for:index="indx">
+                        <tr key={rule.key} id={rule.key}>
+                            <td class="slds-p-top_medium">{rule.rowcount}</td>
+                            <td class="slds-p-left_small">
+                                <lightning-combobox name="field" data-id={indx}
+                                label="" value="" placeholder="--Select--"
+                                options={fieldlist} onchange={handleChange}>
+                              </lightning-combobox>
+                            </td>
+                            <td class="slds-p-left_small">
+                                <lightning-combobox name="operator" data-id={indx}
+                                label="" value="" placeholder="--Select--"
+                                options={operatorvalues} onchange={handleChange}>
+                              </lightning-combobox>
+                            </td>
+                            <td class="slds-p-left_small">
+                                <lightning-input data-id={indx} name="rulevalue" label="" onchange={handleChange}></lightning-input>                               
+                            </td>
+                        </tr>
+                    </template>
+                </table>
+                <br>
+                <div class="slds-grid">
+                    <div class="slds-col slds-p-horizontal_medium slds-size_2-of-2">
+                        <template if:false={showlogic}>
+                            <lightning-button variant="base" name="addlink" label="Add Filter Logic.." title="Logic Link" onclick={handlelogicclick} class="slds-m-left_x-small"></lightning-button>
+                        </template>
+                        <template if:true={showlogic}>
+                            <lightning-button variant="base" name="removelink" label="Clear Filter Logic" title="Remove Logic Link" onclick={handlelogicclick} class="slds-m-left_x-small"></lightning-button>
+                            <lightning-input name="logicfield" label="" type="text" variant="label-hidden" class="filterinput"></lightning-input>
+                        </template>
+                    </div>
+                </div>
+                <br/>
+                <p style="height: 20px; border:none; background-color:#D3D3D3">Step 3: Select the user or queue to assign the Lead to</p>
+                <br/>
+                <div class="slds-grid slds-wrap">
+                    <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
+                        <lightning-combobox name="assigntype" class="assignee"
+                        label="" value={assigndefault} placeholder=""
+                        options={assignoptions} onchange={handleAssigneeChange}>
+                      </lightning-combobox>
+                    </div>
+                    <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
+                            <c-custom-search-picklist-l-w-c options={dataforchild} onvaluechange={handlecustompicklist} isemailtemplate={noemail}></c-custom-search-picklist-l-w-c>
+                    </div>
+                    <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
+                        <c-custom-search-picklist-l-w-c options={emailtemplate} onvaluechange={handlecustompicklist} isemailtemplate={email}></c-custom-search-picklist-l-w-c>
+                </div>
+                </div>
+                <br/>
+                <br/>
+                <div class="slds-align_absolute-center">
+                    <lightning-button  variant="brand" label="Create" title="" onclick={createAssigmentCriteria} class="slds-m-left_x-small"></lightning-button>
+                    <lightning-button  variant="brand" label="Cancel" title="" onclick={closeQuickaction} class="slds-m-left_x-small"></lightning-button>
+                </div>
+            </div>
+    </lightning-card>
+</template>

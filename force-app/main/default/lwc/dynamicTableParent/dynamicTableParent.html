@@ -1,0 +1,21 @@
+<template>
+    <div>
+        <a onclick={addrow}>
+            <lightning-icon icon-name="utility:add" alternative-text="add"></lightning-icon>
+        </a>
+    </div>
+    <table>
+        <tr>
+            <th>Sr. No.</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Salary</th>
+            <th>Designation</th>
+        </tr>
+
+        <template for:each={datavar} for:item='item'>
+            <c:dynamic-table-child-comp key={item} srno={item.index}></c:dynamic-table-child-comp>
+        </template>
+    </table>
+    <lightning-button label="Save" variant="brand" onclick={savedata}></lightning-button>
+</template>

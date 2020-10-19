@@ -1,0 +1,22 @@
+<template>
+        <td ><div>{srno}</div></td>        
+        <td ><lightning-input type="text" data-id="fname" name="fname" variant="label-hidden" label="First Name" value={fname} onchange={handlevalueschange}></lightning-input></td>
+        <td ><lightning-input type="text" data-id="lname" name="lname" variant="label-hidden" label="Last Name" value={lname} onchange={handlevalueschange}></lightning-input></td>
+        <td ><lightning-input type="number" data-id="salary" name="salary" variant="label-hidden" label="Salary" value={salary} onchange={handlevalueschange}></lightning-input></td>
+        <td >
+            <lightning-combobox
+            data-id="designation"
+            name="designation"
+            label="Designation"
+            variant="label-hidden"
+            value={designationval}
+            placeholder="Select Designation"
+            options={options}
+            onchange={handlePicklistChange} ></lightning-combobox>
+        </td>
+        <td >
+            <a onclick={remove}>
+                <lightning-icon icon-name="utility:delete" alternative-text="delete"></lightning-icon>
+            </a>
+        </td>
+</template>

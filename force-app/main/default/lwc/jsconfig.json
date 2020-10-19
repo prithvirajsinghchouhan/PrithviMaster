@@ -1,0 +1,79 @@
+{
+    "compilerOptions": {
+        "experimentalDecorators": true,
+        "baseUrl": ".",
+        "paths": {
+            "c/barcodecanner": [
+                "barcodecanner/barcodecanner.js"
+            ],
+            "c/chartUpdate": [
+                "chartUpdate/chartUpdate.js"
+            ],
+            "c/creatingQuotes": [
+                "creatingQuotes/creatingQuotes.js"
+            ],
+            "c/dynamiTableParentComp": [
+                "dynamiTableParentComp/dynamiTableParentComp.js"
+            ],
+            "c/dynamicTableChildComp": [
+                "dynamicTableChildComp/dynamicTableChildComp.js"
+            ],
+            "c/dynamicTableParent": [
+                "dynamicTableParent/dynamicTableParent.js"
+            ],
+            "c/fetchingdatafromapex": [
+                "fetchingdatafromapex/fetchingdatafromapex.js"
+            ],
+            "c/lWC_Channel_Solution_Links": [
+                "lWC_Channel_Solution_Links/lWC_Channel_Solution_Links.js"
+            ],
+            "c/lWC_Links": [
+                "lWC_Links/lWC_Links.js"
+            ],
+            "c/lWC_WelcomeToVeevaOnlineipad": [
+                "lWC_WelcomeToVeevaOnlineipad/lWC_WelcomeToVeevaOnlineipad.js"
+            ],
+            "c/lWC_ipadResourceEditOverride": [
+                "lWC_ipadResourceEditOverride/lWC_ipadResourceEditOverride.js"
+            ],
+            "c/lwcRegistrationPage": [
+                "lwcRegistrationPage/lwcRegistrationPage.js"
+            ],
+            "c/onchangeinputlookupfield": [
+                "onchangeinputlookupfield/onchangeinputlookupfield.js"
+            ],
+            "c/pubsub": [
+                "pubsub/pubsub.js"
+            ],
+            "c/recordEditFormTesting": [
+                "recordEditFormTesting/recordEditFormTesting.js"
+            ],
+            "c/registrationInputFields": [
+                "registrationInputFields/registrationInputFields.js"
+            ],
+            "c/registrationPage": [
+                "registrationPage/registrationPage.js"
+            ],
+            "c/showCharts": [
+                "showCharts/showCharts.js"
+            ],
+            "c/testWireService": [
+                "testWireService/testWireService.js"
+            ]
+        }
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    },
+    "paths": {
+        "c/*": [
+            "*"
+        ]
+    }
+}

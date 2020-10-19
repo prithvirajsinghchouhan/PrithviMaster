@@ -1,0 +1,88 @@
+<template>
+    <lightning-record-edit-form object-api-name={quoteObject} onsuccess={handleQuoteCreated} column=2>
+        <lightning-messages></lightning-messages>
+        <div class="slds-grid slds-wrap">
+			<div class="slds-col slds-size_12-of-12"><table style="height: 35px; border:none;background-color:#94b9d1;padding-left: 2px;">
+				<tr>
+					<th>
+						<div title="Name">Quote Information</div>
+					</th>
+					
+				</tr>
+				</table></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={nameField}></lightning-input-field></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={ExpirationDateField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name='OpportunityId' value={oppField}></lightning-input-field></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={synField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name='AccountId' value={accField}></lightning-input-field></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={statusField}></lightning-input-field></div>
+                <div class="slds-col slds-size_6-of-12"></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={descField}></lightning-input-field></div>
+			<div class="slds-col slds-size_12-of-12"><table style="height: 35px; border:none;background-color:#94b9d1;padding-left: 2px;">
+				<tr>
+					<th>
+						<div title="Name">Prepared For</div>
+					</th>
+					
+				</tr>
+				</table></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name='ContactId' value={contactField}></lightning-input-field></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={phoneField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={emailField}></lightning-input-field></div>
+			<div class="slds-col slds-size_12-of-12"><table style="height: 35px; border:none;background-color:#94b9d1;padding-left: 2px;">
+				<tr>
+					<th>
+						<div title="Name">Quote Header Section</div>
+					</th>
+					
+				</tr>
+				</table></div>
+				<!--<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={salesrepnameField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={companyaddressField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={coaddrField}></lightning-input-field></div>-->
+			<div class="slds-col slds-size_12-of-12"><table style="height: 35px; border:none;background-color:#94b9d1;padding-left: 2px;">
+				<tr>
+					<th>
+						<div title="Name">Address Information</div>
+					</th>
+					
+				</tr>
+				</table></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={billingnameField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={billingaddressField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"></div>
+			<div class="slds-col slds-size_12-of-12"><table style="height: 35px; border:none;background-color:#94b9d1;padding-left: 2px;">
+				<tr>
+					<th>
+						<div title="Name">Quote Verbage Section</div>
+					</th>
+					
+				</tr>
+				</table></div>
+				<!--<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={openingcommentsField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={openingcommentsdelField}></lightning-input-field></div>
+                <div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={closureareaField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={defaultclosureField}></lightning-input-field></div>
+				<div class="slds-col slds-size_6-of-12"></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={defaultfooterField}></lightning-input-field></div>-->
+			<div class="slds-col slds-size_12-of-12"><table style="height: 35px; border:none;background-color:#94b9d1;padding-left: 2px;">
+				<tr>
+					<th>
+						<div title="Name">Totals</div>
+					</th>
+					
+				</tr>
+				</table></div>
+				<div class="slds-col slds-size_6-of-12"></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={discountField}></lightning-input-field></div>
+                <div class="slds-col slds-size_6-of-12"></div>
+				<div class="slds-col slds-size_6-of-12"><lightning-input-field field-name={grandtotalField}></lightning-input-field></div>
+                <div class="slds-col slds-size_1-of-2">
+                <!-- More lightning-input-field components here -->
+            </div>
+        </div>
+        <lightning-button type="submit" variant="brand" label="Create Quote" onclick={handleSave}></lightning-button>
+    </lightning-record-edit-form>
+</template>

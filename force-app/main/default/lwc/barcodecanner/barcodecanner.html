@@ -1,0 +1,27 @@
+<template>
+    <!-- <ltng:require styles="/resource/barcodeScanner/slds221.min.css" /> -->
+  <!-- <aura:attribute name="recordId" type="String" /> 
+  <aura:attribute name="columns" type="List"/>
+  <aura:attribute name="data" type="List" />
+  <aura:attribute name="keyField" type="String" default="id"/>
+  <aura:attribute name="barCode" type="String" default="" access="GLOBAL" />
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}" />-->
+  <!--<lightning-spinner aura:id="_spinner" variant="brand" size="large" class="slds-hide"></lightning-spinner>-->
+  <div>
+      
+          <lightning-input id="uploadBarcode" type="file" accept="image/*" onchange={readthebarcode}></lightning-input>
+    
+      <!--<div class="slds-grid slds-m-around--small">
+          <lightning-button variant="neutral" label="Scan Barcode" onclick={readthebarcode} ></lightning-button>
+      </div>
+      <div class="slds-grid slds-m-around--small slds-box slds-theme--default slds-hide" id="_barCodeImageContainer">
+          <img id="barCodeImage" class="barcodeContainer" src=""/>
+      </div><br/>
+      <div class="slds-text-heading--small slds-text-align--center slds-hide" id="_barCode"></div>
+      <center>Output Scanned Data: {barCode1}</center><br/> -->
+  </div>
+      
+     <!--
+<iframe src="/resource/barcodeScanner_old/quaggajs.html" style="width:100%;" id="_quaggaFrame" class="slds-hide" ></iframe>
+     --> 
+</template>

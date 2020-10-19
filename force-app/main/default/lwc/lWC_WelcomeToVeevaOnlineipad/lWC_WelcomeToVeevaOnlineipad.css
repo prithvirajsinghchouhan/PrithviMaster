@@ -1,0 +1,39 @@
+.pageDescription{
+    font-weight: 500;
+    font-size: 2em;
+}
+ .pageDesc{
+    font-weight: 300;
+    font-size: 1.5em;
+}
+ .msg{
+    font-weight: 500;
+    font-size: 1em;
+}
+ .Pagefont{
+    font-family: sans-serif;	
+}
+ .individualPalette .secondaryPalette.bPageBlock{
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #eaeaea;
+    border-left: 1px solid #eaeaea;
+    border-right: 1px solid #eaeaea;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+ .individualPalette .Custom99Block .secondaryPalette {
+    border-top: 3px solid #f96b07;
+}
+ .apexp .bPageBlock .detailList {
+    width: 100%;
+}
+ .bEditBlock.bPageBlock .detailList tr th {
+    border-bottom-width: 0;
+}
+ .editPage .bPageBlock .detailList tr th {
+    border-bottom: none;
+}
+ .pbSubheader.first {
+    border-top: none;
+}

@@ -1,0 +1,22 @@
+<template>
+    <div>
+        <a onclick={addrow}>
+            <lightning-icon icon-name="utility:add" alternative-text="add"></lightning-icon>
+        </a>
+    </div>
+    <table>
+        <tr>
+            <th style="width: 50px;">Sr. No.</th>
+            <th style="width: 50px;">First Name</th>
+            <th style="width: 50px;">Last Name</th>
+            <th style="width: 50px;">Salary</th>
+            <th style="width: 50px;">Designation</th>
+            <th style="width: 50px;">Action</th>
+        </tr>
+
+        <template for:each={datavar} for:item='item'>
+                <c-dynamic-table-child-comp key={item} srno={item.index} onremoverow={handleremoverow}></c-dynamic-table-child-comp>
+        </template> 
+    </table>
+    <lightning-button label="Save" variant="brand" onclick={savedata}></lightning-button>
+</template>
