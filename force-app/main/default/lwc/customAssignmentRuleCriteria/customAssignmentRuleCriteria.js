@@ -205,6 +205,7 @@ export default class CustomAssignmentRuleCriteria extends NavigationMixin(Lightn
         {
             this.showToastNotification('Error','Please fill the Sort Order!','error');
             return;
+    
         }
         else{
             if(this.assigneevalue == undefined || this.assigneevalue == '')
