@@ -162,6 +162,36 @@ public with sharing class CustomAssignmentRuleCntrl {
         return false;
     }
 
+    @AuraEnabled
+    public static Boolean deleteCriteriaRecords(String sortorder,String assignmentId){
+        try{
+            List<Assignment_Rule_Criteria__c> arc = [Select id,name from Assignment_Rule_Criteria__c where Assignment_Rule__c=: assignmentId and Sort_Order__c=:sortorder];
+        if(arc.size() > 0)
+        {
+            delete arc;
+        }
+
+        List<Assignment_Rule_Criteria__c> updatelst = new List<Assignment_Rule_Criteria__c>();
+        List<Assignment_Rule_Criteria__c> arcupdate = [Select id,name from Assignment_Rule_Criteria__c where Assignment_Rule__c=: assignmentId and Sort_Order__c>:sortorder];
+        for(Assignment_Rule_Criteria__c ar :arcupdate)
+        {
+            ar.Sort_Order__c = ar.Sort_Order__c + 1;
+            updatelst.add(ar);
+        }
+        if(updatelst.size()>0)
+        {
+            update updatelst;
+        }
+        }
+        Catch(Exception ex)
+        {
+            return false;
+        }
+        return true;
+
+    }
+
+
     public class RuleCriteria{
         @AuraEnabled public String Order;
         @AuraEnabled public String Criteria;
