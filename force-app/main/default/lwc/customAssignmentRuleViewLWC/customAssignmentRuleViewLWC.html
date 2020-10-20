@@ -1,4 +1,7 @@
 <template>
+    <template if:true={spinner}>
+        <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+       </template>
     <lightning-card >
         <!--div class="slds-page-header" role="banner">
             <div class="slds-grid">

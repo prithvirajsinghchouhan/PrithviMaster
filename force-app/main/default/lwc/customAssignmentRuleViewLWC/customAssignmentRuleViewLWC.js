@@ -10,6 +10,7 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     @track checkboxVal = true;
     @track checkboxfalse = false;
     @track showmodel = false;
+    @track spinner = false;
 
     @wire(getAllCriteriaRecords,{assignmentId:'$recordId'})
     allFields({ error, data }) {
@@ -27,6 +28,7 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     {
         var val = event.target;
         this.showmodel = true;
+        //handleConfirmDialogYes(val);
         
     }
 
@@ -34,15 +36,20 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     {
         deleteCriteriaRecords({sortorder:val.name ,assignmentId:this.recordId})
         .then(result => {
-            if(result == 'Success')
+            if(result)
             {
-                this.spinner = false;
-                this.showToastNotification('Success','Assignment Criterias Created Successfully!!','success');
-                this.closeQuickaction(event);
+                this.showToastNotification('SUCCESS','Assignment Criteria deleted!','error');
+                getAllCriteriaRecords({assignmentId:'$recordId'})
+                .then(result => {
+                    
+                        this.allcriteriarecords = result;
+                })
+                .catch(error => {
+                    console.log('** ERROR **'+JSON.stringify(error));
+                });
             }
         })
         .catch(error => {
-            this.spinner = false;
             console.log('** ERROR **'+JSON.stringify(error));
         });
     }
@@ -50,6 +57,16 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     handleConfirmDialogNo(event)
     {
         this.showmodel = false;
+    }
+
+    showToastNotification(title,message,variant)
+    {
+        const evt = new ShowToastEvent({
+            title: title,
+            message: message,
+            variant: variant
+        });
+        this.dispatchEvent(evt);
     }
 
 }
