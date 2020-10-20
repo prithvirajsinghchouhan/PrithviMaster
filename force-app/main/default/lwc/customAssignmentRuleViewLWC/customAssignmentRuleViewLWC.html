@@ -61,8 +61,9 @@
         <div class="slds-grid slds-wrap">
             <table>
               <tr>
+                <th class="slds-p-left_small" style="width:10%">Action</th>
                 <th class="slds-p-left_small" style="width:10%">Sort Order</th>
-                <th class="slds-p-left_small" style="width:60%">Field</th>
+                <th class="slds-p-left_small" style="width:50%">Field</th>
                 <th class="slds-p-left_small" >Assign To</th>
                 <th class="slds-p-left_small" style="width:8%">Email</th>
             </tr>
@@ -72,6 +73,7 @@
                     <td class="slds-p-top_medium">{crec.Field_Name__c}</td>
                     <td class="slds-p-top_medium">{crec.Operator__c}</td>
                     <td class="slds-p-top_medium">{crec.Value__c}</td-->
+                        <td class="slds-p-top_medium slds-p-left_small"><lightning-button variant="base" name="editcriteria" label="Edit" title="Edit" onclick={editCriteria} class="slds-m-left_x-small"></lightning-button> | <lightning-button variant="base" name="deletecriteria" label="Delete" title="delete" onclick={deleteCriteria} class="slds-m-left_x-small"></lightning-button></td>
                         <td class="slds-p-top_medium slds-p-left_small">{crec.Order}</td>
                         <td class="slds-p-top_medium slds-p-left_small">{crec.Criteria}</td>
                         <td class="slds-p-top_medium slds-p-left_small">{crec.Assignee}</td>
