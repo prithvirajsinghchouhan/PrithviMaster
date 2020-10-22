@@ -170,7 +170,7 @@ public with sharing class CustomAssignmentRuleCntrl {
         {
             delete arc;
         }
-
+        /*
         List<Assignment_Rule_Criteria__c> updatelst = new List<Assignment_Rule_Criteria__c>();
         List<Assignment_Rule_Criteria__c> arcupdate = [Select id,name from Assignment_Rule_Criteria__c where Assignment_Rule__c=: assignmentId and Sort_Order__c>:sortorder];
         for(Assignment_Rule_Criteria__c ar :arcupdate)
@@ -181,7 +181,7 @@ public with sharing class CustomAssignmentRuleCntrl {
         if(updatelst.size()>0)
         {
             update updatelst;
-        }
+        }*/
         }
         Catch(Exception ex)
         {

@@ -11,6 +11,7 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     @track checkboxfalse = false;
     @track showmodel = false;
     @track spinner = false;
+    @track deleteorder = 0;
 
     @wire(getAllCriteriaRecords,{assignmentId:'$recordId'})
     allFields({ error, data }) {
@@ -27,24 +28,28 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     deleteCriteria(event)
     {
         var val = event.target;
+        var sorder = val.dataset.name;
         this.showmodel = true;
-        //handleConfirmDialogYes(val);
-        
+        this.deleteorder = sorder;
+        console.log('dfdfdfd :'+this.deleteorder + 'dfgssfssefs :'+sorder);
     }
 
-    handleConfirmDialogYes(val)
+    handleConfirmDialogYes()
     {
-        deleteCriteriaRecords({sortorder:val.name ,assignmentId:this.recordId})
+        deleteCriteriaRecords({sortorder:this.deleteorder ,assignmentId:this.recordId})
         .then(result => {
             if(result)
             {
+                this.showmodel = false;
+                this.spinner = true;
                 this.showToastNotification('SUCCESS','Assignment Criteria deleted!','error');
                 getAllCriteriaRecords({assignmentId:'$recordId'})
                 .then(result => {
-                    
                         this.allcriteriarecords = result;
+                        this.spinner = false;
                 })
                 .catch(error => {
+                    this.spinner = false;
                     console.log('** ERROR **'+JSON.stringify(error));
                 });
             }

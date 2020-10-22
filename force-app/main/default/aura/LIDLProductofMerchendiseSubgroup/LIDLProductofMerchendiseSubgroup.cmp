@@ -1,0 +1,41 @@
+<aura:component implements="force:hasRecordId,force:appHostable,flexipage:availableForAllPageTypes,forceCommunity:availableForAllPageTypes" access="global" controller="LIDLMerchendiseSubGroupCtrl">
+    <aura:attribute name="recordId" type="String" />
+    <aura:attribute type="Test1__c[]" name="products"/> 
+    <aura:attribute type="Test1__c[]" name="paginationproducts"/> 
+    <aura:attribute type="Integer" name="start"/>
+    <aura:attribute type="Integer" name="end"/>
+    <aura:attribute type="Integer" name="previous"/>
+    <aura:attribute type="boolean" name="ispreviousdisable"/>
+    <aura:attribute type="boolean" name="isnextdisable"/>
+    <aura:attribute type="boolean" name="isproducts"/>
+    <lightning:navigation aura:id="navService"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <lightning:card  title="Merchendise Products" class="slds-text-title bold">
+    <div style="margin-bottom: 50px;background-color: #fff;" class="table-responsive panel-body slds-p-left_small slds-p-right_small">
+                        
+        <table id="clinic_list" class="slds-table slds-table_cell-buffer slds-table_col-bordered slds-table--bordered slds-table--striped">
+            <thead>
+                <tr>
+                    <th scope="col"><span class="slds-truncate">Product Name</span></th>
+                    <th scope="col"><span class="slds-truncate">XYZ</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <aura:iteration items="{!v.paginationproducts}" var="product" indexVar ="index">
+                    <tr>
+                        <td><ui:outputURL value="{!product.Id}" label="{!product.Name}" click="{!c.RedirectDetailPage}"/></td>
+                        <td>
+                            {!product.Complexity_Point__c}
+                        </td>
+                    </tr>
+                </aura:iteration>
+            </tbody>
+        </table>
+        <div class="slds-p-top_small slds-float_right">
+        <lightning:button class="page_prev" variant="brand" disabled="{!v.ispreviousdisable}" onclick="{!c.PreviousPage}" >Previous</lightning:button>
+        <lightning:button class="page_next"  variant="brand" disabled="{!v.isnextdisable}" onclick="{!c.NextPage}" >Next</lightning:button>
+    </div>
+    </div>
+</lightning:card>
+</aura:component>	
