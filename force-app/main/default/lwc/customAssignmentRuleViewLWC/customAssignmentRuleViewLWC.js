@@ -1,4 +1,5 @@
 import { LightningElement,api, wire, track } from 'lwc';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import getAllCriteriaRecords from '@salesforce/apex/CustomAssignmentRuleCntrl.getAllCriteriaRecords';
 import deleteCriteriaRecords from '@salesforce/apex/CustomAssignmentRuleCntrl.deleteCriteriaRecords';
 
@@ -38,23 +39,28 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     {
         deleteCriteriaRecords({sortorder:this.deleteorder ,assignmentId:this.recordId})
         .then(result => {
-            if(result)
-            {
+            console.log('fjgsfsd :'+result);
+            //if(result=='true')
+            //{
                 this.showmodel = false;
                 this.spinner = true;
-                this.showToastNotification('SUCCESS','Assignment Criteria deleted!','error');
-                getAllCriteriaRecords({assignmentId:'$recordId'})
+                console.log('dfsfsfsfd');
+                this.showToastNotification('SUCCESS','Assignment Criteria deleted!','success');
+                getAllCriteriaRecords({assignmentId:this.recordId})
                 .then(result => {
+                    console.log('dfsfsfsfd11');
                         this.allcriteriarecords = result;
                         this.spinner = false;
                 })
                 .catch(error => {
+                    console.log('dfsfsfsfd22');
                     this.spinner = false;
                     console.log('** ERROR **'+JSON.stringify(error));
                 });
-            }
+            //}
         })
         .catch(error => {
+            console.log('dfsfsfsfd333');
             console.log('** ERROR **'+JSON.stringify(error));
         });
     }

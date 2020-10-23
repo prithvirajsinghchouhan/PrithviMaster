@@ -163,13 +163,16 @@ public with sharing class CustomAssignmentRuleCntrl {
     }
 
     @AuraEnabled
-    public static Boolean deleteCriteriaRecords(String sortorder,String assignmentId){
+    public static String deleteCriteriaRecords(String sortorder,String assignmentId){
+        String Success = 'false';
         try{
             List<Assignment_Rule_Criteria__c> arc = [Select id,name from Assignment_Rule_Criteria__c where Assignment_Rule__c=: assignmentId and Sort_Order__c=:sortorder];
         if(arc.size() > 0)
         {
             delete arc;
+            Success = 'true';
         }
+        
         /*
         List<Assignment_Rule_Criteria__c> updatelst = new List<Assignment_Rule_Criteria__c>();
         List<Assignment_Rule_Criteria__c> arcupdate = [Select id,name from Assignment_Rule_Criteria__c where Assignment_Rule__c=: assignmentId and Sort_Order__c>:sortorder];
@@ -185,9 +188,12 @@ public with sharing class CustomAssignmentRuleCntrl {
         }
         Catch(Exception ex)
         {
-            return false;
+            Success = 'false';
+            System.debug('ffdsdjf exception :'+ex.getMessage());
+            throw new AuraHandledException(ex.getMessage());
+            
         }
-        return true;
+        return Success;
 
     }
 
