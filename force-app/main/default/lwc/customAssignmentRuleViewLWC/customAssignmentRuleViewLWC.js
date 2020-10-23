@@ -1,5 +1,6 @@
 import { LightningElement,api, wire, track } from 'lwc';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
+import { refreshApex } from '@salesforce/apex';
 import getAllCriteriaRecords from '@salesforce/apex/CustomAssignmentRuleCntrl.getAllCriteriaRecords';
 import deleteCriteriaRecords from '@salesforce/apex/CustomAssignmentRuleCntrl.deleteCriteriaRecords';
 
@@ -11,18 +12,21 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     @track checkboxVal = true;
     @track checkboxfalse = false;
     @track showmodel = false;
-    @track spinner = false;
+    //@track spinner = false;
     @track deleteorder = 0;
 
+    allcriteriarecords1;
+
     @wire(getAllCriteriaRecords,{assignmentId:'$recordId'})
-    allFields({ error, data }) {
-        if(data){
-            console.log('JSON data field'+JSON.stringify(data));
-            this.allcriteriarecords = data;
+    allFields(result) {
+        this.allcriteriarecords1 = result;
+        if(result.data){
+            console.log('JSON data field'+JSON.stringify(result.data));
+            this.allcriteriarecords = result.data;
             console.log('djf@@ : '+JSON.stringify(this.allcriteriarecords));
         }
         else{
-            console.log('JSON error field'+JSON.stringify(error));
+            console.log('JSON error field'+JSON.stringify(result.error));
         }
     }
 
@@ -43,10 +47,14 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
             //if(result=='true')
             //{
                 this.showmodel = false;
-                this.spinner = true;
+                //this.spinner = true;
                 console.log('dfsfsfsfd');
+                this.refreshdata();
                 this.showToastNotification('SUCCESS','Assignment Criteria deleted!','success');
-                getAllCriteriaRecords({assignmentId:this.recordId})
+                console.log('this. dsfh11'+this.allcriteriarecords);
+                //refreshApex(this.allcriteriarecords1);
+                console.log('this. dsfh'+this.allcriteriarecords);
+                /*getAllCriteriaRecords({assignmentId:this.recordId})
                 .then(result => {
                     console.log('dfsfsfsfd11');
                         this.allcriteriarecords = result;
@@ -56,13 +64,32 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
                     console.log('dfsfsfsfd22');
                     this.spinner = false;
                     console.log('** ERROR **'+JSON.stringify(error));
-                });
+                });*/
             //}
         })
         .catch(error => {
             console.log('dfsfsfsfd333');
             console.log('** ERROR **'+JSON.stringify(error));
         });
+    }
+
+    refreshdata()
+    {
+        console.log('ffffffffff122222');
+        return refreshApex(this.allcriteriarecords1);
+        console.log('ffffffffff');
+        /*getAllCriteriaRecords({assignmentId:this.recordId})
+                .then(result => {
+                    console.log('dfsfsfsfd11');
+                        this.allcriteriarecords = result;
+                        this.spinner = false;
+                        console.log('chdhfhdfh  ::'+this.allcriteriarecords);
+                })
+                .catch(error => {
+                    console.log('dfsfsfsfd22');
+                    this.spinner = false;
+                    console.log('** ERROR **'+JSON.stringify(error));
+                });*/
     }
 
     handleConfirmDialogNo(event)
