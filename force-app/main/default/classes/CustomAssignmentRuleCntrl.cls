@@ -196,7 +196,26 @@ public with sharing class CustomAssignmentRuleCntrl {
         return Success;
 
     }
+    @AuraEnabled(cacheable=true)
+    public static List<Assignment_Rule_Criteria__c> getAssignmentCriteriarecords(String sortorder,String assignmentId){	
+        //Integer i = Integer.valueof(sortorder);	
+        return [Select id,name,Assignee_Id__c,Assignee_Name__c,Assignee_Type__c,Assignment_Rule__c,Email_Template_Id__c,Field_Name__c,Filter_Logic__c,Filter_Sequence__c,Operator__c,Sort_Order__c,Value__c from Assignment_Rule_Criteria__c where Assignment_Rule__c=: assignmentId and Sort_Order__c=:sortorder order by Filter_Sequence__c];	
+    }
 
+    @AuraEnabled
+    public static string updateAssignmentCriterias(List<Assignment_Rule_Criteria__c> assignmentcriterialst){
+        String mesg ='Error';
+        try{
+            update assignmentcriterialst;
+            return 'Success';
+        }
+        Catch(Exception ex)
+        {
+            System.debug('Error');
+            mesg = ex.getMessage();
+        }
+        return mesg;
+    }
 
     public class RuleCriteria{
         @AuraEnabled public String Order;

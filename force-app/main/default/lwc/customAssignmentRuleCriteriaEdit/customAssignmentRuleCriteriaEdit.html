@@ -7,7 +7,7 @@
               <br/>
              <div class="slds-grid">
              <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
-                 <lightning-input class="sortfield" label="Sort Order" type="number" value="" required min='1' pattern="[0-9]*" message-when-pattern-mismatch="Please fill correct Sort Order"></lightning-input>
+                 <lightning-input class="sortfield" label="Sort Order" type="number" value={sortorderedit} required min='1' pattern="[0-9]*" message-when-pattern-mismatch="Please fill correct Sort Order"></lightning-input>
              </div>
              </div>
              <br/>
@@ -55,7 +55,7 @@
                          </template>
                          <template if:true={showlogic}>
                              <lightning-button variant="base" name="removelink" label="Clear Filter Logic" title="Remove Logic Link" onclick={handlelogicclick} class="slds-m-left_x-small"></lightning-button>
-                             <lightning-input name="logicfield" label="" type="text" variant="label-hidden" class="filterinput"></lightning-input>
+                             <lightning-input name="logicfield" label="" type="text" value={filterlogicedit} variant="label-hidden" class="filterinput"></lightning-input>
                          </template>
                      </div>
                  </div>
@@ -70,10 +70,10 @@
                        </lightning-combobox>
                      </div>
                      <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
-                             <c-custom-search-picklist-l-w-c options={dataforchild} onvaluechange={handlecustompicklist} isemailtemplate={noemail}></c-custom-search-picklist-l-w-c>
+                             <c-custom-search-picklist-l-w-c class="assigneecomponent" options={dataforchild} onvaluechange={handlecustompicklist} isemailtemplate={noemail}></c-custom-search-picklist-l-w-c>
                      </div>
                      <div class="slds-col slds-p-horizontal_medium slds-size_1-of-2">
-                         <c-custom-search-picklist-l-w-c options={emailtemplate} onvaluechange={handlecustompicklist} isemailtemplate={email}></c-custom-search-picklist-l-w-c>
+                         <c-custom-search-picklist-l-w-c class="emailtemplatecomponent" options={emailtemplate} onvaluechange={handlecustompicklist} isemailtemplate={email}></c-custom-search-picklist-l-w-c>
                  </div>
                  </div>
                  <br/>

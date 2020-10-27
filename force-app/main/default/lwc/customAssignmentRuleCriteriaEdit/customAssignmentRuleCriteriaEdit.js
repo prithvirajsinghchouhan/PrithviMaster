@@ -6,6 +6,7 @@ import getQueuerecords from '@salesforce/apex/CustomAssignmentRuleCntrl.getQueue
 import getAllemailtemplates from '@salesforce/apex/CustomAssignmentRuleCntrl.getAllEmailTemplates';
 import OrderCheck from '@salesforce/apex/CustomAssignmentRuleCntrl.OrderCheck'; 
 import getAssignmentCritera from '@salesforce/apex/CustomAssignmentRuleCntrl.getAssignmentCriteriarecords';
+import updateAssignmentCritera from '@salesforce/apex/CustomAssignmentRuleCntrl.updateAssignmentCriterias';
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 import { getPicklistValues } from 'lightning/uiObjectInfoApi';
 import OPERATOR_FIELD from '@salesforce/schema/Assignment_Rule_Criteria__c.Operator__c';
@@ -35,11 +36,12 @@ export default class CustomAssignmentRuleCriteriaEdit extends LightningElement {
 
     @api sortorderedit ='';
     @api assignmentId;
+    @track filterlogicedit;
 
     @wire(getOperator)
     allPicklistValues({ error, data }) {
         if(data){
-            console.log('JSON pick'+JSON.stringify(data) +'sortorderedit : '+this.sortorderedit);
+            console.log('JSON pick'+JSON.stringify(data) +'sortorderedit 11: '+this.sortorderedit);
             this.operatorvalues = data.map(opvalue => {
                 return {
                     label: opvalue.split('-')[0],
@@ -102,7 +104,7 @@ export default class CustomAssignmentRuleCriteriaEdit extends LightningElement {
             this.fieldlist = data.map(obj => {
                 return {
                     label: obj.split('-')[1],
-                    value: obj
+                    value: obj.split('-')[0]
                 };
             });
             console.log('JSON data field1'+JSON.stringify(this.fieldlist));
@@ -113,9 +115,15 @@ export default class CustomAssignmentRuleCriteriaEdit extends LightningElement {
     }
 
 
-    @wire(getAssignmentCritera,{sortorder: this.sortorderedit,assignmentId:'$recordId'})
+    @wire(getAssignmentCritera,{sortorder: '$sortorderedit',assignmentId:'$recordId'})
     getallassignmentrecords({ error, data }) {
         if(data){
+            this.filterlogicedit = data[0].Filter_Logic__c;
+            this.assigneename = data[0].Assignee_Name__c;
+            this.assigneevalue = data[0].Assignee_Id__c;
+            this.emailtemplateID = data[0].Email_Template_Id__c;
+            this.assigndefault = data[0].Assignee_Type__c;
+            //var cus = this.template.querySelector("c-custom-search-picklist-l-w-c");
             console.log('JSON data new field 23456'+JSON.stringify(data));
             this.rulelist = data.map(obj => {
                 return {
@@ -125,7 +133,10 @@ export default class CustomAssignmentRuleCriteriaEdit extends LightningElement {
                     value: obj.Value__c
                 };
             });
-            console.log('JSON data  new field1'+JSON.stringify(this.fieldlist));
+            this.totalrule = this.rulelist.length;
+            this.template.querySelector(".assigneecomponent").handleselectedvalue(data[0].Assignee_Name__c);
+            this.template.querySelector(".emailtemplatecomponent").handleselectedvalue(data[0].Assignee_Name__c);
+            console.log('JSON data  new field1'+JSON.stringify(this.fieldlist) +'tttttt ::: '+this.totalrule);
         }
         else{
             console.log('JSON error new field 9876'+JSON.stringify(error));
@@ -137,7 +148,7 @@ export default class CustomAssignmentRuleCriteriaEdit extends LightningElement {
         var evt = event.target;
         if(evt.name == 'field')
         {
-            this.rulelist[evt.dataset.id].field = evt.value.split('-')[0];
+            this.rulelist[evt.dataset.id].field = evt.value;//.split('-')[0];
         }
         else if(evt.name == 'operator')
         {
@@ -280,7 +291,7 @@ export default class CustomAssignmentRuleCriteriaEdit extends LightningElement {
                 }
                 console.log('dfhdfhdf'+JSON.stringify(finalarray));
                     this.spinner = true;
-                createAssignmentCritera({assignmentcriterialst: finalarray})
+                updateAssignmentCritera({assignmentcriterialst: finalarray})
                 .then(result => {
                 if(result == 'Success')
                 {

@@ -116,4 +116,12 @@ export default class ValidateDataListComponent extends LightningElement {
         this.handleRemoveSelectedOption();
     }
 
+    @api handleselectedvalue(selectedval)
+    {
+        this.selectedAssignee = selectedval;
+        this.template.querySelector('.selectedOption').classList.remove('slds-hide');
+        this.template.querySelector('.accounts_list').classList.add('slds-hide');
+        this.template.querySelector('.defaultClass').classList.add('slds-hide');
+    }
+
 }
