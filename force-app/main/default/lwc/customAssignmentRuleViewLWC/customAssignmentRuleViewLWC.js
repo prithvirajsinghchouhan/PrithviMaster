@@ -14,6 +14,8 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     @track showmodel = false;
     //@track spinner = false;
     @track deleteorder = 0;
+    @track sendsortorder;
+    @track showedit = false;
 
     allcriteriarecords1;
 
@@ -95,6 +97,15 @@ export default class CustomAssignmentRuleViewLWC extends LightningElement {
     handleConfirmDialogNo(event)
     {
         this.showmodel = false;
+    }
+
+    editCriteria(event)
+    {
+        var val = event.target;
+
+        this.sendsortorder = val.dataset.name;
+        console.log('dfjsbdfjd :::'+this.sendsortorder);
+        this.showedit = true;
     }
 
     showToastNotification(title,message,variant)

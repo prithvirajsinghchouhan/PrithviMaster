@@ -98,7 +98,7 @@ export default class ValidateDataListComponent extends LightningElement {
         this.showAccountsListFlag = false;
         this.selectedAssignee = '';
         const selectedEvent = new CustomEvent("valuechange", {
-            detail: {val:event.currentTarget.dataset.name,isemail: this.isemailtemplate,name: this.selectedAssignee}
+            detail: {val:'',isemail: this.isemailtemplate,name: this.selectedAssignee}
           });
         this.dispatchEvent(selectedEvent);
     }
